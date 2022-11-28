@@ -16,9 +16,10 @@ public class UserService {
     public UserDto join(UserJoinRequest request) {
 
         // username 중복 체크 로직
-        if(userRepository.findByUsername(request.getUsername()).isPresent()) {
-            throw new RuntimeException("Username이 중복됩니다.");
-        }
+        userRepository.findByUsername(request.getUsername())
+                .ifPresent(user -> {
+                    throw new RuntimeException("Username이 중복됩니다.");
+                });
 
         User savedUser = userRepository.save(request.toEntity());
 
