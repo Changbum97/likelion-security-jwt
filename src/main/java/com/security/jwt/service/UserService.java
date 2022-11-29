@@ -7,6 +7,7 @@ import com.security.jwt.exception.CustomizedException;
 import com.security.jwt.exception.ErrorCode;
 import com.security.jwt.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder encoder;
 
     public UserDto join(UserJoinRequest request) {
 
@@ -32,7 +34,8 @@ public class UserService {
                             String.format("Email : %s", request.getEmail()));
                 });
 
-        User savedUser = userRepository.save(request.toEntity());
+        // 비밀번호를 직접 인코딩해서 전달
+        User savedUser = userRepository.save(request.toEntity(encoder.encode(request.getPassword())));
 
         return UserDto.builder()
                 .id(savedUser.getId())
