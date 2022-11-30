@@ -1,9 +1,7 @@
 package com.security.jwt.controller;
 
 import com.security.jwt.domain.Response;
-import com.security.jwt.domain.dto.UserDto;
-import com.security.jwt.domain.dto.UserJoinRequest;
-import com.security.jwt.domain.dto.UserJoinResponse;
+import com.security.jwt.domain.dto.*;
 import com.security.jwt.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,5 +20,11 @@ public class UserController {
     public Response<UserJoinResponse> join(@RequestBody UserJoinRequest request) {
         UserDto userDto = userService.join(request);
         return Response.success(new UserJoinResponse(userDto.getUsername(), userDto.getEmail()));
+    }
+
+    @PostMapping("/login")
+    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest userLoginRequest) {
+        String token = userService.login(userLoginRequest.getUsername(), userLoginRequest.getPassword());
+        return Response.success(new UserLoginResponse(token));
     }
 }

@@ -56,4 +56,27 @@ class UserControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("로그인 실패 - id없음")
+    @WithMockUser
+    void login_fail1() throws Exception {
+        UserJoinRequest userJoinRequest = UserJoinRequest.builder()
+                .username("kyeongrok")
+                .password("1q2w3e4r")
+                .email("oceanfog1@gmail.com")
+                .build();
+
+        // id, pw를 보내서
+        when(userService.login(any(), any()))
+                .thenThrow(new CustomizedException(ErrorCode.NOT_FOUND, ""));
+
+        // NOT_FOUND를 받으면 잘 만든 것이다
+        mockMvc.perform(post("/api/v1/users/login")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsBytes(userJoinRequest)))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
 }
