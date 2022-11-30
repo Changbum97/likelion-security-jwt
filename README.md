@@ -17,3 +17,4 @@
   - BCryptPasswordEncoder 추가
   - 회원가입 시 password가 암호화되서 DB에 등록됨
   - Security Test 코드 구현
+  - 로그인 성공 시 JWT Token 발행
