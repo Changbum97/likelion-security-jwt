@@ -1,5 +1,6 @@
 package com.security.jwt.domain;
 
+import com.security.jwt.domain.UserRole.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,5 +22,8 @@ public class User {
     private String username;
     private String password;
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
 }

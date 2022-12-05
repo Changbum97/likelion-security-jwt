@@ -1,6 +1,7 @@
 package com.security.jwt.domain.dto;
 
 import com.security.jwt.domain.User;
+import com.security.jwt.domain.UserRole.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class UserJoinRequest {
                 .username(this.username)
                 .password(password)
                 .email(this.email)
+                .role(UserRole.USER)
                 .build();
     }
 }
