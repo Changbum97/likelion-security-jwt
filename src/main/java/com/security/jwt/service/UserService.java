@@ -67,4 +67,9 @@ public class UserService {
         // 두가지 확인중 예외 안 났으면 Token발행
         return JwtTokenUtil.createToken(username, secretKey, expireTimeMs);
     }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new CustomizedException(ErrorCode.NOT_FOUND, "Username Not Found"));
+    }
 }

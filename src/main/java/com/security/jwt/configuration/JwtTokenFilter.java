@@ -1,5 +1,6 @@
 package com.security.jwt.configuration;
 
+import com.security.jwt.domain.User;
 import com.security.jwt.service.UserService;
 import com.security.jwt.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
@@ -53,9 +54,17 @@ public class JwtTokenFilter extends OncePerRequestFilter {  // OncePerRequestFil
             return;
         }
 
+        // Token에서 username 꺼내기
+        String username = JwtTokenUtil.getUsername(token, secretKey);
+        log.info("username : {}", username);
+
+        // username으로 User 찾아오기
+        User user = userService.getUserByUsername(username);
+        log.info("userRole : {}", user.getRole());
+
         // 권한을 주거나 안주기
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                "", null, List.of(new SimpleGrantedAuthority("USER")));
+                user.getUsername(), null, List.of(new SimpleGrantedAuthority(user.getRole().name())));
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);  // 권한 부여
         filterChain.doFilter(request, response);

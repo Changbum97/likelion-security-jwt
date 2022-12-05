@@ -3,13 +3,15 @@ package com.security.jwt.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 
+@Slf4j
 public class JwtTokenUtil {
     public static String createToken(String username, String key, long expireTimeMs) {
         Claims claims = Jwts.claims(); // 일종의 map
-        claims.put("userName", username);
+        claims.put("username", username);
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -17,6 +19,11 @@ public class JwtTokenUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + expireTimeMs))
                 .signWith(SignatureAlgorithm.HS256, key)
                 .compact();
+    }
+
+    public static String getUsername(String token, String secretKey) {
+        log.info("body : {}", extractClaims(token, secretKey));
+        return extractClaims(token, secretKey).get("username").toString();
     }
 
     public static boolean isExpired(String token, String secretKey) {
