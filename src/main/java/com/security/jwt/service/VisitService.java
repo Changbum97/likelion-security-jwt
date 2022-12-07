@@ -12,6 +12,7 @@ import com.security.jwt.repository.VisitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,9 @@ public class VisitService {
 
         Visit visit = visitRepository.save(request.toEntity(hospital, user));
         return visit;
+    }
+
+    public List<Visit> findAll() {
+        return visitRepository.findAll();
     }
 }
