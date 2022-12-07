@@ -13,6 +13,6 @@ public class CustomizedException extends RuntimeException{
     @Override
     public String toString() {
         if(message == null) return errorCode.getMessage();
-        return String.format("%s. %s", errorCode.getMessage(), message);
+        return String.format("%s", message);
     }
 }

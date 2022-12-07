@@ -18,6 +18,6 @@ public class ExceptionManager {
     @ExceptionHandler(CustomizedException.class)
     public ResponseEntity<?> customizedExceptionHandler(CustomizedException e) {
         return ResponseEntity.status(e.getErrorCode().getStatus())
-                .body(e.getMessage() + "\n" + e.getErrorCode().getMessage() +"\n" + e.getErrorCode().name());
+                .body(e.getMessage() + "\n" + e.getErrorCode().name());
     }
 }
