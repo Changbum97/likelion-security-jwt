@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +39,13 @@ public class VisitService {
 
     public List<Visit> findAll() {
         return visitRepository.findAll();
+    }
+
+    public List<Visit> findByUserId(Long userId) {
+        return visitRepository.findByUserId(userId);
+    }
+
+    public List<Visit> findByHospitalId(Long hospitalId) {
+        return visitRepository.findByHospitalId(hospitalId);
     }
 }

@@ -31,6 +31,22 @@ public class VisitController {
                 .map(visit -> {
                     return VisitResponse.of(visit);
                 }).collect(Collectors.toList());
-
     }
+
+    @GetMapping("/users/{userId}")
+    public List<VisitResponse> getUsersVisit(@PathVariable Long userId) {
+        return visitService.findByUserId(userId).stream()
+                .map(visit -> {
+                    return VisitResponse.of(visit);
+                }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/hospitals/{hospitalId}")
+    public List<VisitResponse> getHospitalsVisit(@PathVariable Long hospitalId) {
+        return visitService.findByHospitalId(hospitalId).stream()
+                .map(visit -> {
+                    return VisitResponse.of(visit);
+                }).collect(Collectors.toList());
+    }
+
 }
