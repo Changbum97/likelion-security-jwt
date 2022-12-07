@@ -28,5 +28,5 @@
 ## Day 4 (12/07 수)
 - Hospital, User, Visit 예제
 - ERD
-![](https://user-images.githubusercontent.com/87286719/206073325-19db867c-c687-40e8-8f34-7462f72a0661.png)
+![](https://user-images.githubusercontent.com/87286719/206073709-f0c73b58-41bc-4c31-a00d-410041f4f1d7.png)
 - 
