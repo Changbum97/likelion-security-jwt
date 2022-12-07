@@ -29,4 +29,9 @@
 - Hospital, User, Visit 예제
 - ERD
 ![](https://user-images.githubusercontent.com/87286719/206073709-f0c73b58-41bc-4c31-a00d-410041f4f1d7.png)
-- 
+- Visit 등록 기능 구현
+  - JwtToken 인증 성공 시 등록 가능
+  - Hospital Id는 직접 입력 받음
+- 전체 Visit 조회 기능 구현
+- 특정 User가 작성한 Visit 전체 조회 기능 구현
+- 특정 Hospital에 추가된 Visit 전체 조회 기능 구현
