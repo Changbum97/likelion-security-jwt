@@ -1,4 +1,4 @@
-package com.security.jwt.domain;
+package com.security.jwt.domain.entity;
 
 import com.security.jwt.domain.UserRole.UserRole;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,9 +22,11 @@ public class User {
     @Column(unique = true)
     private String username;
     private String password;
-    private String email;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Visit> visits;
 
 }

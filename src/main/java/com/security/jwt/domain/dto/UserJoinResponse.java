@@ -8,5 +8,4 @@ import lombok.Getter;
 public class UserJoinResponse {
 
     private String username;
-    private String email;
 }

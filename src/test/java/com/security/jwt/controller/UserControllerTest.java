@@ -1,8 +1,6 @@
 package com.security.jwt.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.security.jwt.domain.User;
 import com.security.jwt.domain.dto.UserDto;
 import com.security.jwt.domain.dto.UserJoinRequest;
 import com.security.jwt.exception.CustomizedException;
@@ -44,7 +42,6 @@ class UserControllerTest {
         UserJoinRequest userJoinRequest = UserJoinRequest.builder()
                 .username("kyeongrok")
                 .password("1q2w3e4r")
-                .email("oceanfog1@gmail.com")
                 .build();
 
         when(userService.join(any())).thenReturn(mock(UserDto.class));
@@ -64,7 +61,6 @@ class UserControllerTest {
         UserJoinRequest userJoinRequest = UserJoinRequest.builder()
                 .username("kyeongrok")
                 .password("1q2w3e4r")
-                .email("oceanfog1@gmail.com")
                 .build();
 
         // id, pw를 보내서

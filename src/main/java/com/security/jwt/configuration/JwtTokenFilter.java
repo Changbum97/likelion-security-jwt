@@ -1,6 +1,6 @@
 package com.security.jwt.configuration;
 
-import com.security.jwt.domain.User;
+import com.security.jwt.domain.entity.User;
 import com.security.jwt.service.UserService;
 import com.security.jwt.util.JwtTokenUtil;
 import lombok.RequiredArgsConstructor;
