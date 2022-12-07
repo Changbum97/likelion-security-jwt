@@ -17,10 +17,16 @@
   - Security Test 코드 구현
   - 로그인 성공 시 JWT Token 발행
 
-## Day 3 (12/05 dnjf)
+## Day 3 (12/05 월)
 - Filter을 사용해 login, join을 제외한 POST 요청 차단
 - Header(Authorization)에서 JWT Token 추출
 - 추출한 JWT Token 만료시간 체크
 - 추출한 JWT Token에서 username 추출
 - 추출한 username으로 User 객체 불러오기
 - Controller에서 Authentication 접근
+
+## Day 4 (12/07 수)
+- Hospital, User, Visit 예제
+- ERD
+![](https://user-images.githubusercontent.com/87286719/206073325-19db867c-c687-40e8-8f34-7462f72a0661.png)
+- 
