@@ -4,25 +4,27 @@ import com.security.jwt.domain.entity.Hospital;
 import com.security.jwt.domain.entity.User;
 import com.security.jwt.domain.entity.Visit;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class VisitCreateRequest {
+@Builder
+public class VisitCreateResponse {
 
     private Long hospitalId;
+    private Long userId;
     private String disease;
     private int medicalExpenses;
 
-    public Visit toEntity(Hospital hospital, User user) {
-        return Visit.builder()
-                .createdAt(LocalDateTime.now())
-                .disease(this.disease)
-                .hospital(hospital)
-                .user(user)
-                .medicalExpenses(this.medicalExpenses)
+    public static VisitCreateResponse of(Visit visit) {
+        return VisitCreateResponse.builder()
+                .userId(visit.getUser().getId())
+                .hospitalId(visit.getHospital().getId())
+                .disease(visit.getDisease())
+                .medicalExpenses(visit.getMedicalExpenses())
                 .build();
     }
 }

@@ -1,6 +1,7 @@
 package com.security.jwt.domain.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,13 +12,14 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Visit {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDateTime createdAt;
     private String disease;             // 병원 방문 이유
-    private String medicalExpenses;     // 진료비
+    private int medicalExpenses;     // 진료비
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
