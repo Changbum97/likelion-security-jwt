@@ -13,11 +13,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Visit {
+public class Visit extends BaseEntity{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime createdAt;
     private String disease;             // 병원 방문 이유
     private int medicalExpenses;     // 진료비
 

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @AllArgsConstructor
 @Builder
@@ -14,6 +16,7 @@ public class VisitResponse {
     private Long userId;
     private String disease;
     private int medicalExpenses;
+    private LocalDateTime createdAt;
 
     public static VisitResponse of(Visit visit) {
         return VisitResponse.builder()
@@ -21,6 +24,7 @@ public class VisitResponse {
                 .hospitalId(visit.getHospital().getId())
                 .disease(visit.getDisease())
                 .medicalExpenses(visit.getMedicalExpenses())
+                .createdAt(visit.getCreatedAt())
                 .build();
     }
 }

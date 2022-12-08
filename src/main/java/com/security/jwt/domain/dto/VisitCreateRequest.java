@@ -18,7 +18,6 @@ public class VisitCreateRequest {
 
     public Visit toEntity(Hospital hospital, User user) {
         return Visit.builder()
-                .createdAt(LocalDateTime.now())
                 .disease(this.disease)
                 .hospital(hospital)
                 .user(user)
