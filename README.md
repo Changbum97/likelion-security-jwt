@@ -38,3 +38,6 @@
 
 ## Day 5 (12/08 목)
 - Audit 적용 (BaseEntity)
+  - createdAt, updatedAt과 같이 공통으로 들어가는 column을 Base Entity로 만들고 상속받아 사용
+- createdAt에 @CreatedDate 적용 => 자동으로 생성 일자 등록
+- updatedAt에 @LastModifiedDate 적용 => 자동으로 최근 수정 일자 등록
