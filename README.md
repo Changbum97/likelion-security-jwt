@@ -35,3 +35,6 @@
 - 전체 Visit 조회 기능 구현
 - 특정 User가 작성한 Visit 전체 조회 기능 구현
 - 특정 Hospital에 추가된 Visit 전체 조회 기능 구현
+
+## Day 5 (12/08 목)
+- Audit 적용 (BaseEntity)
